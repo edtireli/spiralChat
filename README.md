@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.22"><img src="assets/local-ci.svg" alt="local CI · v3.34.22"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.23"><img src="assets/local-ci.svg" alt="local CI · v3.34.23"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
