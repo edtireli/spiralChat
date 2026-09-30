@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.21"><img src="assets/local-ci.svg" alt="local CI · v3.34.21"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.22"><img src="assets/local-ci.svg" alt="local CI · v3.34.22"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -42,10 +42,6 @@ Add the features you want; your phone connects to the same Mac.
 <p align="center"><img src="assets/divider.svg" width="520" alt=""/></p>
 
 ## Start here
-
-**Downloads:** the [Android APK](https://github.com/edtireli/spiralChat/releases/latest)
-is available. The Mac installer is being prepared for public distribution; existing
-Mac installations continue to work. The Mac steps below apply once its download is available.
 
 You need an **Apple silicon Mac**. Android is optional and needs **Android 9 or later**.
 
@@ -431,9 +427,14 @@ Installers are built locally. The release includes a build report and SHA-256 ha
 The local CI badge refers to the checks recorded for that version; it does not claim
 physical-device performance, notarisation, or untested model capabilities.
 
-This repository holds the public app page and downloads. Development source and
-build tooling are maintained separately in a private repository. GitHub’s automatic
-“Source code” archives contain only this public page and its images.
+This repository holds the public app page and downloads. Development source, build
+tools, and debug mappings are private. GitHub’s automatic “Source code” archives
+contain only the public page, images, guide, and licence notices.
+
+The Android and Mac interfaces are obfuscated. The Mac’s host implementation is
+compiled to native modules. Small launchers, a redistributable integration helper,
+and open-source dependencies retain their own terms. These protections make reverse
+engineering harder; they do not make a downloaded app impossible to reconstruct.
 
 ## Licence
 
