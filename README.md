@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.24"><img src="assets/local-ci.svg" alt="local CI · v3.34.24"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.25"><img src="assets/local-ci.svg" alt="local CI · v3.34.25"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -37,7 +37,7 @@ Add the features you want; your phone connects to the same Mac.
 | **Transcription** | Dictate a message or watch words appear while you speak. |
 | **Translation** | Translate live speech and hear the result with an offline device voice. |
 | **Images** | Turn a prompt into an image with an optional local image model. |
-| **Video** | Generate a short video with an optional local video model. |
+| **Video** | Generate a short video from a prompt, or use first and last frame images with a compatible model. |
 
 <p align="center"><img src="assets/divider.svg" width="520" alt=""/></p>
 
@@ -122,6 +122,11 @@ You can disable a plugin without deleting its files.
 For speech, open **Live transcription** after enabling a transcription model. Add a
 translation model to translate your words. **Read aloud** uses an installed offline
 voice on your device; the text-to-speech plugin provides voices for chat replies.
+
+To guide a video, attach one image for its first frame, or two for its first and
+last frames, then ask Spiral to make a video. Check the images and prompt on the
+review card before choosing **Generate**. This needs an **H3 FL2VA** model; JPEG
+and PNG images up to 2 MiB each are supported.
 
 ## Methods
 
