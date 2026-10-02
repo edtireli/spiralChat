@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.25"><img src="assets/local-ci.svg" alt="local CI · v3.34.25"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.26"><img src="assets/local-ci.svg" alt="local CI · v3.34.26"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -32,12 +32,17 @@ Add the features you want; your phone connects to the same Mac.
 |---|---|
 | **Chat & vision** | Ask questions, discuss photos and PDFs, and read formatted maths and code. |
 | **Research** | Explore the web and get answers with sources. |
-| **Files & coding** | Let Spiral work in a folder you choose, with progress and approval controls. |
+| **Files & coding** | Find a project on your Mac, review edits, run builds, and selectively commit or push with your Git setup. |
 | **Text to speech** | Hear replies through your own compatible voice model. |
 | **Transcription** | Dictate a message or watch words appear while you speak. |
 | **Translation** | Translate live speech and hear the result with an offline device voice. |
 | **Images** | Turn a prompt into an image with an optional local image model. |
 | **Video** | Generate a short video from a prompt, or use first and last frame images with a compatible model. |
+
+For coding, tell Spiral the name of your project. It can search your Mac, then ask
+you to confirm the folder and review source edits or Git operations. Progress and
+command results stay with the task. How well it completes the work depends on the
+model you choose.
 
 <p align="center"><img src="assets/divider.svg" width="520" alt=""/></p>
 
