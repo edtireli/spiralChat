@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.26"><img src="assets/local-ci.svg" alt="local CI · v3.34.26"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.27"><img src="assets/local-ci.svg" alt="local CI · v3.34.27"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -36,7 +36,7 @@ Add the features you want; your phone connects to the same Mac.
 | **Text to speech** | Hear replies through your own compatible voice model. |
 | **Transcription** | Dictate a message or watch words appear while you speak. |
 | **Translation** | Translate live speech and hear the result with an offline device voice. |
-| **Images** | Turn a prompt into an image with an optional local image model. |
+| **Images** | Generate images or edit attached images with a compatible local model, with step controls and progress previews. |
 | **Video** | Generate a short video from a prompt, or use first and last frame images with a compatible model. |
 
 For coding, tell Spiral the name of your project. It can search your Mac, then ask
@@ -91,6 +91,28 @@ Nothing downloads just because you browse it. The model picker supports local Ol
 models and compatible public Hugging Face **GGUF chat models**. Other formats and
 speech and media models are available under **plugins**; see [supported formats](#plugin-models).
 
+## Model parameters and longer tasks
+
+Open **model parameters** by the composer on Mac, or the existing model settings
+on Android. Choose your chat model and supported context size, and select installed
+image and video models in the same controls. The Mac model list scrolls and closes
+when you click outside it.
+
+For image generation, choose **1–80 steps** (20 by default). Compatible Qwen Image
+2.1 installations support image editing: attach one or two JPEG/PNG images, up to
+2 MiB each, and describe the edit. A faint preview and an **x/N steps** counter
+show progress. **Turbo** uses a separate distilled model with an eight-step schedule;
+the switch becomes available after its optional companion files are installed.
+Model weights and Turbo companions are not included in the app download. Video
+controls include the installed model, duration and aspect ratio.
+
+New autonomous tasks compact older working context as it fills, retaining the
+goal, latest instructions and references to saved history. They can continue
+without a fixed total step/time cap, until completion, cancellation, a permission
+request or a blocker. Individual operations and repeated-action guards remain
+bounded. Compaction does not expand a model's physical context window or guarantee
+that it will finish every task.
+
 ## Connect your phone
 
 Install the **Android app (.apk)** from the same release. Keep the Mac awake and
@@ -108,7 +130,9 @@ there is no preset personal server in the app.
 On Android, open the chats sidebar and choose **clear all** to remove saved chats
 and finished Deep Spiral entries. You can also clear finished runs individually or
 use **clear finished** on the Deep Spirals screen. Running work and project files
-on your Mac stay in place. Chat deletions sync when the Mac reconnects.
+on your Mac stay in place. Chat deletions sync when the Mac reconnects. Deleting a
+chat does not erase all generated image files: host outputs/previews and some desktop cached images can
+remain on the Mac.
 
 ## Add features
 
@@ -146,7 +170,7 @@ These are model formats, not a fixed list of models:
 | Transcription | MLX Whisper, with `config.json` and `weights.safetensors` | Dictation and live transcription |
 | Translation | MLX TranslateGemma, including its translation chat template | Live translation; also needs transcription |
 | Text to speech | MLX Qwen3-TTS **CustomVoice** conversions | Reading chat replies aloud; speakers come from the model |
-| Image generation | Diffusers **Z-Image** pipeline | Image generation in chat |
+| Image generation | Diffusers **Z-Image**, or the supported **Qwen Image 2.1 GGUF** pack | Image generation and compatible image editing in chat |
 | Video generation | **MLX-Serve H3** model pack with Turbo LoRA | Short local videos |
 
 A Hugging Face task label alone does not establish compatibility. The plugin checks
