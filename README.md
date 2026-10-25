@@ -14,6 +14,14 @@ models; your phone connects to it.
 <p align="center"><img src="assets/feature-mac.gif" alt="Spiral’s native Mac app: conversation, model controls and sidebar" width="100%"/></p>
 <p align="center"><sub>Mac app · sample conversation in demo mode</sub></p>
 
+## Android reader · 3.36.0
+
+Open **Reader & screen assistant** in the chat drawer to paste or share text and read it aloud. It uses your saved voice, precision, theme and connection settings. Playback continues in the background with notification controls.
+
+Choose **enable assistant** to select Spiral as Android’s digital assistant, then use your phone’s assistant gesture to read a screen or ask about it. Screen capture happens on demand; content reaches your Mac only when you tap Read or Help. A home-screen widget and Quick Settings tile provide shortcuts.
+
+[Download the Android update](https://github.com/edtireli/spiralChat/releases/tag/v3.36.0). The Mac installer remains at 3.34.27; this release updates Android only.
+
 ## What Spiral can do
 
 Chat, research, work on files, and create with models running on your own Mac.
@@ -33,7 +41,8 @@ Add the features you want; your phone connects to the same Mac.
 | **Chat & vision** | Ask questions, discuss photos and PDFs, and read formatted maths and code. |
 | **Research** | Explore the web and get answers with sources. |
 | **Files & coding** | Find a project on your Mac, review edits, run builds, and selectively commit or push with your Git setup. |
-| **Text to speech** | Hear replies through your own compatible voice model. |
+| **Text to speech** | Hear replies or pasted text through your compatible voice models, with voice and precision controls. |
+| **Android screen assistant** | Read the current screen or ask about it using Spiral’s existing connection, selected model and voice. |
 | **Transcription** | Dictate a message or watch words appear while you speak. |
 | **Translation** | Translate live speech and hear the result with an offline device voice. |
 | **Images** | Generate images or edit attached images with a compatible local model, with step controls and progress previews. |
@@ -51,7 +60,7 @@ model you choose.
 You need an **Apple silicon Mac**. Android is optional and needs **Android 9 or later**.
 
 1. Install and open [Ollama](https://ollama.com/download/mac).
-2. Get the **Mac app (.dmg)** from the [latest release](https://github.com/edtireli/spiralChat/releases/latest).
+2. Get the **Mac app (.dmg)** from the [current Mac release](https://github.com/edtireli/spiralChat/releases/tag/v3.34.27).
    Drag **spiral** into Applications and open it. Its background helper sets itself up.
 3. Open **setup checklist** in the sidebar. It shows what is ready and what you still need.
 4. Open **models**, choose what to download and where to keep it, then click **Download to Mac**.
