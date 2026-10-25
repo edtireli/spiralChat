@@ -14,13 +14,13 @@ models; your phone connects to it.
 <p align="center"><img src="assets/feature-mac.gif" alt="Spiral’s native Mac app: conversation, model controls and sidebar" width="100%"/></p>
 <p align="center"><sub>Mac app · sample conversation in demo mode</sub></p>
 
-## Android reader · 3.36.0
+## Android reader · 3.36.1
 
 Open **Reader & screen assistant** in the chat drawer to paste or share text and read it aloud. It uses your saved voice, precision, theme and connection settings. Playback continues in the background with notification controls.
 
-Choose **enable assistant** to select Spiral as Android’s digital assistant, then use your phone’s assistant gesture to read a screen or ask about it. Screen capture happens on demand; content reaches your Mac only when you tap Read or Help. A home-screen widget and Quick Settings tile provide shortcuts.
+Choose **set up assistant** to open Android’s digital assistant settings and select Spiral. The reader confirms when it is enabled and offers **open assistant**. Use your phone’s assistant gesture while another app is open to read that screen or ask about it. Screen capture happens on demand; content reaches your Mac only when you tap Read or Help. A home-screen widget and Quick Settings tile provide shortcuts.
 
-[Download the Android update](https://github.com/edtireli/spiralChat/releases/tag/v3.36.0). The Mac installer remains at 3.34.27; this release updates Android only.
+[Download the Android update](https://github.com/edtireli/spiralChat/releases/tag/v3.36.1). This update fixes assistant setup silently closing on Android versions where the assistant role cannot be requested directly, adds clear activation status, and shows progress while preparing speech. The Mac installer remains at 3.34.27; this release updates Android only.
 
 ## What Spiral can do
 
