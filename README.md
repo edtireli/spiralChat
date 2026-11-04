@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.36.4"><img src="assets/local-ci.svg" alt="local CI · v3.36.4"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.36.5"><img src="assets/local-ci.svg" alt="local CI · v3.36.5 passing"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -14,7 +14,15 @@ models; your phone connects to it.
 <p align="center"><img src="assets/feature-mac.gif" alt="Spiral’s native Mac app: conversation, model controls and sidebar" width="100%"/></p>
 <p align="center"><sub>Mac app · sample conversation in demo mode</sub></p>
 
-## Local agent, media and app updates · 3.36.4
+## Native model routing and context controls · 3.36.5
+
+Hosts configured for direct llama.cpp can read their registered local GGUF catalog
+without an Ollama service, including image input with a compatible registered
+projector. Flash-Next continues to use its separately installed Slotstream runtime.
+It needs a separate runtime update for exact context counting; the APK and DMG
+do not install that update.
+The context controls explain the limit for each model call separately from the
+overall task. See [configured llama.cpp hosts](#configured-llamacpp-hosts).
 
 DeepSeek conversations now use the native agent's conversation, steering and
 context-compaction loop, with durable work on the Mac when the phone disconnects.
@@ -28,13 +36,15 @@ Update the Mac host alongside Android to apply this setting.
 Android can download and install future APK updates from **Settings → Updates**,
 with checksum and signing-certificate verification and Android's confirmation.
 It attempts to reopen the chat after replacement, with a notification fallback
-when Android prevents that. Install 3.36.4 once using the
-[APK download](https://github.com/edtireli/spiralChat/releases/download/v3.36.4/spiral-3.36.4.apk)
-to get this updater. The [release](https://github.com/edtireli/spiralChat/releases/tag/v3.36.4)
+when Android prevents that. This updater was introduced in 3.36.4. Install the current
+[APK download](https://github.com/edtireli/spiralChat/releases/download/v3.36.5/spiral-3.36.5.apk)
+using your existing download method to get it. The [release](https://github.com/edtireli/spiralChat/releases/tag/v3.36.5)
 includes both Android and Mac installers.
 
 These changes improve the harness and delivery. They do not establish
-Codex-equivalent model quality or multi-hour real-model reliability.
+Codex-equivalent model quality or multi-hour real-model reliability. App CI and
+packaging checks passed. A direct Flash text check passed on an earlier candidate;
+Flash coding has not yet been revalidated with the rebuilt runtime.
 
 ## Android reader
 
@@ -78,6 +88,9 @@ model you choose.
 ## Start here
 
 You need an **Apple silicon Mac**. Android is optional and needs **Android 9 or later**.
+
+The standard setup below uses the **Ollama compatibility route**. Ollama is optional
+for a host already configured for [direct llama.cpp](#configured-llamacpp-hosts).
 
 1. Install and open [Ollama](https://ollama.com/download/mac).
 2. Get the **Mac app (.dmg)** from the [latest release](https://github.com/edtireli/spiralChat/releases/latest).
@@ -130,6 +143,10 @@ Open **model parameters** by the composer on Mac, or the existing model settings
 on Android. Choose your chat model and supported context size, and select installed
 image and video models in the same controls. The Mac model list scrolls and closes
 when you click outside it.
+
+The selected context size limits **one model call**. It is not a total token,
+step or time budget for the task. Longer work can make multiple calls and compact
+older history within the selected window.
 
 For image generation, choose **1–80 steps** (20 by default). Compatible Qwen Image
 2.1 installations support image editing: attach one or two JPEG/PNG images, up to
@@ -233,6 +250,9 @@ internet connection for the initial downloads. The current Mac release targets A
 silicon; Android requires **Android 9 or later**. There is no Windows or Linux host
 installer in this release.
 
+These steps describe the default Ollama compatibility setup. An existing
+[configured llama.cpp host](#configured-llamacpp-hosts) can run local chat without it.
+
 1. Install and open [Ollama for Mac](https://ollama.com/download/mac). Leave it running.
    You do not need to download a model in Ollama first or run a second `ollama serve`.
 2. Download the **`.dmg`** from the [latest release](https://github.com/edtireli/spiralChat/releases/latest),
@@ -258,6 +278,8 @@ assets include `SHA256SUMS` and a build report. See Apple's
 Open **models** on Mac, or **settings → Download models** on Android. The chat model
 picker also has a **download models** entry. If the Mac has no installed models,
 the empty chat offers **Choose your first model**.
+
+The download and folder-management flow below uses Ollama compatibility.
 
 | Source | How to choose | What Spiral downloads |
 |---|---|---|
@@ -311,6 +333,23 @@ in Ollama. Cloud-only Ollama entries are excluded. A model must also be supporte
 installed Ollama version. Tools, vision and reliable research depend on the model's own
 capabilities; downloading a chat model does not add those capabilities. Check its
 **Model card & licence** before downloading. See [Hugging Face's Ollama guide](https://huggingface.co/docs/hub/en/ollama).
+
+### Configured llama.cpp hosts
+
+On a host configured for direct llama.cpp, Spiral reads the registered local GGUF
+catalog and runs text and tool calls through that runtime. Image input requires a
+compatible vision model and its registered matching projector. The host validates
+the selected files and their supported features before inference. This route has
+no automatic fallback to Ollama inference or another model.
+
+Ollama does not need to be running for this configured route. The existing download
+and storage-management flow above still uses Ollama compatibility. Other loaded
+models can block admission; Spiral does not unload another task's model to proceed.
+Flash-Next keeps its separate Slotstream runtime and installed model format.
+
+Check the release's build report for the bounded live results and completed tests.
+These checks do not establish general model quality, semantic compaction quality
+or multi-hour reliability.
 
 ### Pairing details
 
@@ -429,10 +468,10 @@ updater using its own instructions and remove its saved credential if no longer 
 | Component | Default location / address | What it does |
 |---|---|---|
 | Mac app | `/Applications/spiral.app` | The native interface and bundled host installer |
-| Background host | `~/Library/Application Support/spiral/host/current/` | Runs independently of the Mac window; starts at login |
+| Background host | `~/Library/Application Support/spiral/host/active/` | Runs independently of the Mac window from a stable executable path; starts at login |
 | Host launch service | `~/Library/LaunchAgents/ed.spiral.host.plist` | Starts and supervises the installed host |
 | HTTPS gateway | Mac port `8443` | The phone’s single authenticated connection |
-| Ollama | `http://127.0.0.1:11434` | Local chat runtime; never forward this port |
+| Ollama compatibility | `http://127.0.0.1:11434` | Default compatibility runtime and model downloads; optional for configured direct llama.cpp chat; never forward this port |
 | Chat weights | `~/.ollama/models`, or Ollama’s configured model drive | Managed by Ollama, including HF GGUF downloads |
 | Conversations / host state | `~/.spiralchat/` | Durable local host data; keep it when updating |
 | Pairing identity | `~/.spiral-gateway/` | Certificate, private key and token; keep private |
@@ -449,7 +488,7 @@ existing compatible model folders. Keep those drives mounted while using the mod
 
 | What you see | What to check |
 |---|---|
-| **No models** | Open **models → Discover**, download one, then choose **Use model**. If Ollama is unavailable, open it on the Mac and refresh. |
+| **No models** | For Ollama compatibility, open Ollama on the Mac and refresh **models**, or download a model through **Discover**. For configured llama.cpp, check the registered model library and the host's access to its drive. |
 | **Connection timeout on Android** | Check that the Mac is awake, both devices are on the same network, the IP is current, and the Mac firewall allows Spiral's gateway. Try the local IP before a public hostname. |
 | **Unauthorized / certificate mismatch** | Run `gateway --show` as above and copy the token and fingerprint again. Do not disable certificate checking or regenerate them as a first fix. |
 | **Model needs newer Ollama** | Update Ollama on the Mac, reopen it, then review the model version again. |
@@ -478,7 +517,7 @@ error. Remove tokens, local file paths and private conversation content before s
   models are optional; set them up through **plugins** using the [supported formats](#plugin-models).
 - **Video:** an optional local backend with additional dependencies and model downloads.
   Set it up in **plugins → Video generation**.
-- **Flash-Next:** a separately installed backend with 32K, 64K, 128K, 256K and 1M context
+- **Flash-Next:** a separately installed Slotstream backend with 32K, 64K, 128K, 256K and 1M context
   choices. Larger windows are experimental; full 1M answer accuracy is **not verified**.
   A large context setting is a capacity limit, not a requirement to process that many
   tokens for every question. Memory and processing time grow with actual input. This
