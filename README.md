@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.34.27"><img src="assets/local-ci.svg" alt="local CI · v3.34.27"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.36.4"><img src="assets/local-ci.svg" alt="local CI · v3.36.4"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -14,13 +14,33 @@ models; your phone connects to it.
 <p align="center"><img src="assets/feature-mac.gif" alt="Spiral’s native Mac app: conversation, model controls and sidebar" width="100%"/></p>
 <p align="center"><sub>Mac app · sample conversation in demo mode</sub></p>
 
-## Android reader · 3.36.1
+## Local agent, media and app updates · 3.36.4
+
+DeepSeek conversations now use the native agent's conversation, steering and
+context-compaction loop, with durable work on the Mac when the phone disconnects.
+Image and video jobs use Spiral's existing progress cards and previews. Both
+harnesses share the configured vision, transcription and speech routes. Decipher
+animations keep the message layout steady while the text effect plays.
+
+DeepSeek also retains the selected thinking mode through retries and regeneration.
+Update the Mac host alongside Android to apply this setting.
+
+Android can download and install future APK updates from **Settings → Updates**,
+with checksum and signing-certificate verification and Android's confirmation.
+It attempts to reopen the chat after replacement, with a notification fallback
+when Android prevents that. Install 3.36.4 once using the
+[APK download](https://github.com/edtireli/spiralChat/releases/download/v3.36.4/spiral-3.36.4.apk)
+to get this updater. The [release](https://github.com/edtireli/spiralChat/releases/tag/v3.36.4)
+includes both Android and Mac installers.
+
+These changes improve the harness and delivery. They do not establish
+Codex-equivalent model quality or multi-hour real-model reliability.
+
+## Android reader
 
 Open **Reader & screen assistant** in the chat drawer to paste or share text and read it aloud. It uses your saved voice, precision, theme and connection settings. Playback continues in the background with notification controls.
 
 Choose **set up assistant** to open Android’s digital assistant settings and select Spiral. The reader confirms when it is enabled and offers **open assistant**. Use your phone’s assistant gesture while another app is open to read that screen or ask about it. Screen capture happens on demand; content reaches your Mac only when you tap Read or Help. A home-screen widget and Quick Settings tile provide shortcuts.
-
-[Download the Android update](https://github.com/edtireli/spiralChat/releases/tag/v3.36.1). This update fixes assistant setup silently closing on Android versions where the assistant role cannot be requested directly, adds clear activation status, and shows progress while preparing speech. The Mac installer remains at 3.34.27; this release updates Android only.
 
 ## What Spiral can do
 
@@ -60,7 +80,7 @@ model you choose.
 You need an **Apple silicon Mac**. Android is optional and needs **Android 9 or later**.
 
 1. Install and open [Ollama](https://ollama.com/download/mac).
-2. Get the **Mac app (.dmg)** from the [current Mac release](https://github.com/edtireli/spiralChat/releases/tag/v3.34.27).
+2. Get the **Mac app (.dmg)** from the [latest release](https://github.com/edtireli/spiralChat/releases/latest).
    Drag **spiral** into Applications and open it. Its background helper sets itself up.
 3. Open **setup checklist** in the sidebar. It shows what is ready and what you still need.
 4. Open **models**, choose what to download and where to keep it, then click **Download to Mac**.
@@ -77,9 +97,13 @@ approve opening Spiral, follow [Apple’s instructions](https://support.apple.co
 
 ## Updates
 
-Open **Settings → Updates** on Mac or Android to check for a new version, read what
-changed, and download it. Install the download when you are ready; your chats and
-settings stay in place.
+Open **Settings → Updates** to check for a new version. On Android 3.36.4 or later,
+**Download and install** downloads the APK inside Spiral, verifies its checksum,
+package, newer version and signing certificate, then opens Android's installation
+confirmation. Your chats and settings stay in place. Android may first ask you
+to allow Spiral to install apps. Spiral attempts to reopen after an update; if
+Android prevents it, use the update notification or open Spiral normally.
+The Mac updater offers the DMG download.
 
 Turn on **Notify me about updates** for occasional alerts. Checks run about twice
 a day, in the background on Android and while Spiral is open on Mac. Allow
@@ -448,7 +472,7 @@ error. Remove tokens, local file paths and private conversation content before s
   context and effort choices, and image/PDF input with a compatible model.
 - **Research and work:** web research, file and code tasks, progress, and approval controls
   through the [Spiral engine](https://github.com/edtireli/spiral). The packaged host includes
-  the pinned engine; tools may need macOS permissions or optional dependencies.
+  the bundled engine; tools may need macOS permissions or optional dependencies.
 - **Live transcription:** a quiet sidebar/drawer entry, measured microphone waveform,
   words that update during speech, optional translation and offline read-aloud. Speech
   models are optional; set them up through **plugins** using the [supported formats](#plugin-models).
