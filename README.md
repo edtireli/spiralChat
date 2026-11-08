@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.gif" alt="spiral" width="900"/></p>
 <p align="center">
-  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.36.5"><img src="assets/local-ci.svg" alt="local CI · v3.36.5 passing"/></a>
+  <a href="https://github.com/edtireli/spiralChat/releases/tag/v3.38.0"><img src="assets/local-ci.svg" alt="local CI · v3.38.0 passing"/></a>
   <img src="https://img.shields.io/badge/macOS-Apple%20silicon-D97757?style=flat-square" alt="Mac · Apple silicon"/>
   <img src="https://img.shields.io/badge/Android%209%2B-D97757?style=flat-square" alt="Android 9+"/>
 </p>
@@ -14,43 +14,52 @@ models; your phone connects to it.
 <p align="center"><img src="assets/feature-mac.gif" alt="Spiral’s native Mac app: conversation, model controls and sidebar" width="100%"/></p>
 <p align="center"><sub>Mac app · sample conversation in demo mode</sub></p>
 
-## Native model routing and context controls · 3.36.5
+## Voice Lab and compact reading · 3.38.0
 
-Hosts configured for direct llama.cpp can read their registered local GGUF catalog
-without an Ollama service, including image input with a compatible registered
-projector. Flash-Next continues to use its separately installed Slotstream runtime.
-It needs a separate runtime update for exact context counting; the APK and DMG
-do not install that update.
-The context controls explain the limit for each model call separately from the
-overall task. See [configured llama.cpp hosts](#configured-llamacpp-hosts).
+Create a reusable voice in **Settings → Voice Lab** on Android or the **voice · lab**
+control on Mac. Record up to 30 seconds, or upload audio/video up to 32 MiB.
+Whisper transcribes the reference; correct the words, listen to the recording,
+and hear a test phrase before choosing **save & use voice**. You can rerecord,
+rename, or delete your custom voices. Fixed trained voice models stay protected.
+Voice Lab uses a separately installed **Qwen3-TTS Base** model; CustomVoice models
+provide presets rather than reference cloning. Configure it in **Plugins → Voice Lab**.
+The app does not bundle model weights.
 
-DeepSeek conversations now use the native agent's conversation, steering and
-context-compaction loop, with durable work on the Mac when the phone disconnects.
-Image and video jobs use Spiral's existing progress cards and previews. Both
-harnesses share the configured vision, transcription and speech routes. Decipher
-animations keep the message layout steady while the text effect plays.
+Spiral now uses one normal chat with its own durable agent loop, steering,
+working notes and saved history. Compatible local vision models can use generic
+screen capture and mouse/keyboard tools on Mac after Screen Recording and
+Accessibility access is granted. Direct llama.cpp uses the installed GGUF catalog;
+Flash-Next uses its separately installed Slotstream runtime. Context controls
+apply to each model call; longer work retrieves and packs saved history as needed.
+Model quality and permissions determine how reliably a task completes.
 
-DeepSeek also retains the selected thinking mode through retries and regeneration.
-Update the Mac host alongside Android to apply this setting.
-
-Android can download and install future APK updates from **Settings → Updates**,
-with checksum and signing-certificate verification and Android's confirmation.
-It attempts to reopen the chat after replacement, with a notification fallback
-when Android prevents that. This updater was introduced in 3.36.4. Install the current
-[APK download](https://github.com/edtireli/spiralChat/releases/download/v3.36.5/spiral-3.36.5.apk)
-using your existing download method to get it. The [release](https://github.com/edtireli/spiralChat/releases/tag/v3.36.5)
-includes both Android and Mac installers.
-
-These changes improve the harness and delivery. They do not establish
-Codex-equivalent model quality or multi-hour real-model reliability. App CI and
-packaging checks passed. A direct Flash text check passed on an earlier candidate;
-Flash coding has not yet been revalidated with the rebuilt runtime.
+Install the [APK](https://github.com/edtireli/spiralChat/releases/download/v3.38.0/spiral-3.38.0.apk)
+and [Mac app](https://github.com/edtireli/spiralChat/releases/download/v3.38.0/spiral-3.38.0.dmg)
+from [release 3.38.0](https://github.com/edtireli/spiralChat/releases/tag/v3.38.0).
+Update both apps for the new host routes. Existing Android versions with the
+in-app updater can use **Settings → Updates → Download and install**.
 
 ## Android reader
 
-Open **Reader & screen assistant** in the chat drawer to paste or share text and read it aloud. It uses your saved voice, precision, theme and connection settings. Playback continues in the background with notification controls.
+Open **Reader & screen assistant** in the chat drawer. Paste text or a public
+page URL, share a page, or select text in another app and choose Spiral.
+Public HTML reading fetches the full article, including sections below the screen.
+It does not forward browser cookies or account credentials. Playback uses your
+saved voice and continues with background notification controls.
 
-Choose **set up assistant** to open Android’s digital assistant settings and select Spiral. The reader confirms when it is enabled and offers **open assistant**. Use your phone’s assistant gesture while another app is open to read that screen or ask about it. Screen capture happens on demand; content reaches your Mac only when you tap Read or Help. A home-screen widget and Quick Settings tile provide shortcuts.
+Choose **set up assistant** and select Spiral in Android’s digital assistant
+settings. Invoke the assistant over another app to get a small row of symbols:
+expand, read/pause, stop, and close. Expanded controls let you **mark area** to read
+selected paragraphs, change voice, or ask about the screen. On-device OCR reads
+text in images; a small local text model on your Mac chooses the body instead of
+reading clocks, menus and status bars. Selection accuracy depends on that model;
+marking an area gives you direct control.
+
+For a longer app document without a page URL, **read all in app** can scan by
+scrolling after you enable **Spiral app reading** in Android Accessibility settings.
+This happens only when requested, covers up to 20 screens / 60,000 characters,
+and stops at repeated content or the end. Secure apps may prevent capture or
+scrolling. Stop cancels the scan. Nothing collects app text in the background.
 
 ## What Spiral can do
 
@@ -72,7 +81,8 @@ Add the features you want; your phone connects to the same Mac.
 | **Research** | Explore the web and get answers with sources. |
 | **Files & coding** | Find a project on your Mac, review edits, run builds, and selectively commit or push with your Git setup. |
 | **Text to speech** | Hear replies or pasted text through your compatible voice models, with voice and precision controls. |
-| **Android screen assistant** | Read the current screen or ask about it using Spiral’s existing connection, selected model and voice. |
+| **Android screen assistant** | Compact controls, selected-area reading, full public pages, and on-demand app scrolling with OCR. |
+| **Voice Lab** | Record or upload a reference, transcribe it, test a cloned voice, and manage your custom voices. |
 | **Transcription** | Dictate a message or watch words appear while you speak. |
 | **Translation** | Translate live speech and hear the result with an offline device voice. |
 | **Images** | Generate images or edit attached images with a compatible local model, with step controls and progress previews. |
